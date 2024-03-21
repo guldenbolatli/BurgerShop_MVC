@@ -1,2 +1,2 @@
-BurgerShop MVC Project
+BurgerShop MVC Project / 
 Project Language: C#
