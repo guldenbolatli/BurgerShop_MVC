@@ -1,1 +1,2 @@
-# Hamburger_MVC-v1.7
+BurgerShop MVC Project
+Project Language: C#
