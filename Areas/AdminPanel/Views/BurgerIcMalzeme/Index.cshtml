@@ -1,0 +1,64 @@
+﻿@using Hamburger_MVC.Models.VMs;
+@model Burger_IcMalzeme_VM
+<h3>İç Malzemeler</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Ad</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.IcMalzemeler?.Count() > 0)
+        {
+            @foreach (var item in Model.IcMalzemeler)
+            {
+                <tr>
+                    <td>@item.Ad</td>
+                    <td></td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="2">IcMalzemeler Yok!!</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<hr />
+<table>
+    <thead>
+        <tr>
+            <th>Ad</th>
+            <th>Fiyat</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Burgerler?.Count() > 0)
+        {
+            @foreach (var item in Model.Burgerler)
+            {
+                <tr>
+                    <td>@item.Ad</td>
+                    <td>@item.BirimFiyat</td>
+                    @*<td>
+                        @(string.Join(", ",item.BurgerinIcMalzemeleri.Select(x=>x.IcMalzeme.Ad)))
+
+                    </td>*@
+                    <td>
+                        <a asp-action="BurgerEditor" asp-route-id="@item.ID" class="btn btn-info">Edit</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="3">Gösterilecek Burger Yok!!</td>
+            </tr>
+        }
+    </tbody>
+</table>

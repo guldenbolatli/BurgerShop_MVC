@@ -1,0 +1,127 @@
+﻿@using Hamburger_MVC.Models.VMs;
+@model Burger_IcMalzeme_VM
+
+<body id="reportsPage">
+    <div class="container mt-5">
+        <div class="row tm-content-row">
+            @*<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 tm-block-col">*@
+            <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8 tm-block-col">
+                <div class="tm-bg-primary-dark tm-block tm-block-products">
+                    <div class="tm-product-table-container">
+                        <table class="table table-hover tm-table-small tm-product-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">&nbsp;</th>
+                                    <th scope="col">Ürün Adı</th>
+                                    <th scope="col">Birim Fiyat</th>
+                                    <th scope="col">Vegan</th>
+                                    <th scope="col">Güncelle</th>
+                                    <th scope="col">Sil</th>
+                                    <th scope="col">İç Malzeme Ekle</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var burger in Model.Burgerler)
+                                {
+
+                                    <tr>
+                                        <th scope="row"><input type="checkbox" /></th>
+                                        <td class="tm-product-name">@burger.Ad</td>
+                                        <td>@burger.BirimFiyat</td>
+                                        @if (burger.VeganMi)
+                                        {
+                                            <td><i class="fas fa-check ml-3"></i></td>
+                                        }
+                                        else
+                                        {
+                                            <td><i class="fas fa-times ml-3"></i></td>
+                                        }
+                                        <td>
+                                            <a asp-controller="Burger" asp-action="Update" asp-route-id="@burger.ID" class="tm-product-delete-link">
+                                                <i class="far fa-edit tm-product-delete-icon"></i>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a asp-controller="Burger" asp-action="Delete" asp-route-id="@burger.ID" class="tm-product-delete-link">
+                                                <i class="far fa-trash-alt tm-product-delete-icon "></i>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a asp-controller="BurgerIcMalzeme" asp-action="BurgerEditor" asp-route-id="@burger.ID" class="tm-product-delete-link">
+                                                <i class="fas fa-plus tm-product-delete-icon"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- table container -->
+                    <a asp-action="Create" asp-controller="Burger"
+                       class="btn btn-primary btn-block text-uppercase mb-3">Yeni Ürün Ekle</a>
+
+
+                    <button asp-controller="Burger" asp-action="Delete" class="btn btn-primary btn-block text-uppercase">
+                        Seçili Ürünleri Sil
+                    </button>
+                </div>
+            </div>
+
+            @*---------------- Icmalzeme Eklemek için ----------------*@
+            @*<div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 tm-block-col">*@
+            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 tm-block-col">
+                <div class="tm-bg-primary-dark tm-block tm-block-products">
+                    <h2 class="tm-block-title">Burger İç Malzemeler</h2>
+                    <div class="tm-product-table-container">
+                        <table class="table tm-table-small tm-product-table">
+                            <tbody>
+                                @foreach (var icMalzeme in Model.IcMalzemeler)
+                                {
+                                    <tr>
+                                        <td class="tm-product-name">@icMalzeme.Ad</td>
+                                        <td class="text-center">
+                                            <a asp-controller="BurgerIcMalzeme" asp-action="Delete" asp-route-id="@icMalzeme.ID" class="tm-product-delete-link">
+                                                <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- table container -->
+                    <a asp-action="Create" asp-controller="Burger"
+                    class="btn btn-primary btn-block text-uppercase mb-3">Yeni Burger İç Malzeme Ekle</a>
+
+                @*    <a href="javascript:void(0);" onclick="toggleCreateForm();" class="btn btn-primary btn-block text-uppercase mb-3">Yeni Burger İç Malzeme Ekle</a>*@
+
+                </div>
+            </div>
+
+            @*------------------------------------*@
+
+        </div>
+    </div>
+
+
+
+        <script>
+    $(function () {
+    $(".tm-product-name").on("click", function () {
+    window.location.href = "edit-product.html";
+    });
+    });
+    </script>
+
+ @*   <script>
+        function toggleCreateForm() {
+            var createForm = document.getElementById('createForm');
+            if (createForm.style.display === 'none') {
+                createForm.style.display = 'block';
+            } else {
+                createForm.style.display = 'none';
+            }
+        }
+    </script>*@
+</body>

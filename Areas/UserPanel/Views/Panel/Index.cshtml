@@ -1,0 +1,429 @@
+﻿@using Hamburger_MVC.Models.ViewModels;
+@model UrunlerVM
+
+<body>
+	<div class="preloader">
+		<div class="preloader-body">
+			<div class="cssload-container">
+				<span></span><span></span><span></span><span></span>
+			</div>
+		</div>
+	</div>
+	<div class="page">
+
+		<!-- Swiper-->
+		<section class="section swiper-container swiper-slider swiper-slider-modern" data-loop="true" data-autoplay="5000" data-simulate-touch="true" data-nav="true" data-slide-effect="fade">
+			<div class="swiper-wrapper text-left">
+				<div class="swiper-slide context-dark" data-slide-bg="/user/images/slider-1920x729.jpg">
+					<div class="swiper-slide-caption">
+						<div class="container">
+							<div class="row justify-content-center justify-content-xxl-start">
+								<div class="col-md-10 col-xxl-6">
+									<div class="slider-modern-box">
+										<h1 class="slider-modern-title"><span data-caption-animate="slideInDown" data-caption-delay="0">Organic Food</span></h1>
+										<p data-caption-animate="fadeInRight" data-caption-delay="400">Herber provides local citizens and guests of our town with quality organic fruits, vegetables, and other products.</p>
+										<div class="oh button-wrap"><a class="button button-primary button-ujarak" href="about-us.html" data-caption-animate="slideInLeft" data-caption-delay="400">Read more</a></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide context-dark" data-slide-bg="/user/images/slider-1920x729.jpg">
+					<div class="swiper-slide-caption">
+						<div class="container">
+							<div class="row justify-content-center justify-content-xxl-start">
+								<div class="col-md-10 col-xxl-6">
+									<div class="slider-modern-box">
+										<h1 class="slider-modern-title"><span data-caption-animate="slideInLeft" data-caption-delay="0">Quality Control</span></h1>
+										<p data-caption-animate="fadeInRight" data-caption-delay="400">We control the process of farming at Herber to deliver the best organic products to our customers throughout the state.</p>
+										<div class="oh button-wrap"><a class="button button-primary button-ujarak" href="about-us.html" data-caption-animate="slideInLeft" data-caption-delay="400">Read more</a></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide" data-slide-bg="/user/images/slider-1920x729.jpg">
+					<div class="swiper-slide-caption">
+						<div class="container">
+							<div class="row justify-content-center justify-content-xxl-start">
+								<div class="col-md-10 col-xxl-6">
+									<div class="slider-modern-box">
+										<h1 class="slider-modern-title"><span data-caption-animate="slideInDown" data-caption-delay="0">Eco-Friendly</span></h1>
+										<p data-caption-animate="fadeInRight" data-caption-delay="400">As the leading organic farm, we maintain an eco-friendly policy of growing and selling healthy food without any additives.</p>
+										<div class="oh button-wrap"><a class="button button-primary button-ujarak" href="about-us.html" data-caption-animate="slideInUp" data-caption-delay="400">Read more</a></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Swiper Navigation-->
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
+			<!-- Swiper Pagination-->
+			<div class="swiper-pagination swiper-pagination-style-2"></div>
+		</section>
+
+		<!-- Icons Ruby-->
+		@*<section class="section section-md bg-default section-top-image">
+			<div class="container">
+				<div class="row row-30 justify-content-center">
+					<div class="col-sm-6 col-lg-4 wow fadeInRight" data-wow-delay="0s">
+						<article class="box-icon-ruby">
+							<div class="unit box-icon-ruby-body flex-column flex-md-row text-md-left flex-lg-column align-items-center text-lg-center flex-xl-row text-xl-left">
+								<div class="unit-left">
+									<div class="box-icon-ruby-icon linearicons-leaf"></div>
+								</div>
+								<div class="unit-body">
+									<h4 class="box-icon-ruby-title"><a href="#">Natural &amp; Organic</a></h4>
+								</div>
+							</div>
+						</article>
+					</div>
+					<div class="col-sm-6 col-lg-4 wow fadeInRight" data-wow-delay=".1s">
+						<article class="box-icon-ruby">
+							<div class="unit box-icon-ruby-body flex-column flex-md-row text-md-left flex-lg-column align-items-center text-lg-center flex-xl-row text-xl-left">
+								<div class="unit-left">
+									<div class="box-icon-ruby-icon linearicons-shovel"></div>
+								</div>
+								<div class="unit-body">
+									<h4 class="box-icon-ruby-title"><a href="#">Best Equipment</a></h4>
+								</div>
+							</div>
+						</article>
+					</div>
+					<div class="col-sm-6 col-lg-4 wow fadeInRight" data-wow-delay=".2s">
+						<article class="box-icon-ruby">
+							<div class="unit box-icon-ruby-body flex-column flex-md-row text-md-left flex-lg-column align-items-center text-lg-center flex-xl-row text-xl-left">
+								<div class="unit-left">
+									<div class="box-icon-ruby-icon linearicons-sun"></div>
+								</div>
+								<div class="unit-body">
+									<h4 class="box-icon-ruby-title"><a href="#">Dedicated Team</a></h4>
+								</div>
+							</div>
+						</article>
+					</div>
+				</div>
+			</div>
+		</section>*@
+
+		<!-- Trending products-->
+		<section class="section section-md bg-default">
+			<div class="container">
+				<div class="row row-40 justify-content-center">
+					<div class="col-sm-8 col-md-7 col-lg-6 wow fadeInLeft" data-wow-delay="0s">
+						<div class="product-banner">
+							<img src="~/user/images/Adsız.jpg" alt="" width="570" height="715" />
+							<div class="product-banner-content">
+								<div class="product-banner-inner" style="background-image: none)">
+								@*	<div class="product-banner-inner" style="background-image: url(/user/images/bg-brush.png)">*@
+									<h3 class="text-secondary-1">Lezzetli</h3>
+									<h2 class="text-primary">Hamburger</h2>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-5 col-lg-6">
+						<div class="row row-30 justify-content-center">
+
+
+							<!-- Product-->
+							@foreach (var item in Model.Menuler)
+							{
+								<div class="col-sm-6 col-md-12 col-lg-6">
+									<div class="oh-desktop">
+										<article class="product product-2 box-ordered-item wow slideInRight" data-wow-delay="0s">
+											<div class="unit flex-row flex-lg-column">
+												<div class="unit-left">
+													<div class="product-figure">
+														<img src="~/Admin/urunfoto/@item.UrunFotografı" alt="" width="270" height="280" />
+														<div class="product-button">
+														</div>
+														<div class="product-button">
+														<button type="button" class="button button-md button-white button-ujarak" id="ekleButton" data-toggle="modal" data-target="#@item.ID" data-itemid="@item.ID">
+															Sepete Ekle
+														</button>
+														</div>
+														<input type="hidden" class="itemId" value="@item.ID">
+														<div class="modal" id="@item.ID">
+															<div class="modal-dialog">
+																<div class="modal-content">
+																	<div class="modal-header">
+																		<h4 class="modal-title">Add to Cart</h4>
+																		<button type="button" class="close" data-dismiss="modal">&times;</button>
+																	</div>
+																	<div class="modal-body" id="modalContent">
+
+																		<table class="table">
+																			<tr>
+																				<td style="display: none;"><span id="menuId-@item.ID" name="menuId-@item.ID">@item.ID</span></td>
+																				<td><span id="menuAd-@item.ID" name="menuAd-@item.ID">@item.Ad</span></td>
+																				<td><span>@item.BirimFiyat</span></td>
+																				<td><img src="~/Admin/urunfoto/@item.UrunFotografı" class="img-fluid img-thumbnail" style="height:150px; width:100px;" alt="..."></td>
+																			</tr>
+
+																		</table>
+																		<hr />
+																		<table class="">
+																			<tr>
+																				<th>Çıkarılabilir Malzeme(@item.Ad)</th>
+
+																			</tr>
+																			<tr>
+																				<td>En Fazla @item.Burger.BurgerinIcMalzemeleri.Count() tane seçebilirsiniz.</td>
+																			</tr>
+																			@foreach (var icMalzeme in item.Burger.BurgerinIcMalzemeleri)
+																			{
+																				<tr>
+																					<td>
+																						<label>@icMalzeme.IcMalzeme.Ad İstemiyorum</label>
+																						<input type="checkbox" id="@icMalzeme.IcMalzeme.ID" name="@icMalzeme.IcMalzeme.ID" class="istenmeyenIcMalzeme-checkbox" />
+																						
+																					</td>
+																				</tr>
+																			}
+																		</table>
+
+																		<table class="">
+																			<tr>
+																				<th>Ekstra Malzeme Seçimi</th>
+
+																			</tr>
+
+																			@foreach (var tumIcMalzeme in Model.IcMalzemeler)
+																			{
+																				if (!item.Burger.BurgerinIcMalzemeleri.Any(x => x.IcMalzemeID == tumIcMalzeme.ID))
+																				{
+																					<tr>
+																						<td>
+
+																							<label>@tumIcMalzeme.Ad</label>
+
+																							<input type="checkbox" id="@tumIcMalzeme.ID" name="@tumIcMalzeme.ID" class="istenenIcMalzeme-checkbox" />
+																						</td>
+																					</tr>
+																				}
+																			}
+																		</table>
+
+
+																		<table class="">
+																			<tr>
+																				<th>İçecek seçimi(Bir tane seçim yapabilirsiniz.)</th>
+
+																			</tr>
+
+																			@foreach (var icecek in Model.Icecekler)
+																			{
+																				<tr>
+																					<td>
+
+																						<label>@icecek.Ad</label>
+																						<input type="radio" id="@icecek.ID" name="IcecekSecimi" />
+																					</td>
+																				</tr>
+																			}
+																		</table>
+																		<table class="">
+																			<tr>
+																				<th>Yan Ürün seçimi(Bir tane seçim yapabilirsiniz.)</th>
+
+																			</tr>
+
+																			@foreach (var yanUrun in Model.YanUrunler)
+																			{
+																				<tr>
+																					<td>
+
+																						<label asp-for="@yanUrun.ID">@yanUrun.Ad</label>
+																						<input type="checkbox" id="@yanUrun.ID" name="@yanUrun.ID" class="yanurun-checkbox" />
+																					</td>
+																				</tr>
+																			}
+																		</table>
+																		<table class="">
+																			<tr>
+																				<th>Sos seçimi</th>
+
+																			</tr>
+
+																			@foreach (var sos in Model.Soslar)
+																			{
+																				<tr>
+																					<td>
+
+																						<label asp-for="@sos.ID">@sos.Ad</label>
+																						<input type="checkbox" class="sos-checkbox" id="@sos.ID" name="Sos_@sos.ID" />
+
+																					</td>
+																				</tr>
+																			}
+																		</table>
+
+
+																	</div>
+																	<div class="modal-footer">
+																		<label>Adet</label>
+																		<input type="number" class="form-control" id="item_SatisAdedi-@item.ID" name="item_SatisAdedi-@item.ID" min="1" value="1">
+																		<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+																		<button id="addToCartButtonInsideModal-@item.ID" name="addToCartButtonInsideModal-@item.ID" class="btn btn-success">Sepete Ekle</button>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="unit-body">
+													<h6 class="product-title"><a href="#">@item.Ad</a></h6>
+													<div class="product-price-wrap">
+														<div class="product-price">@item.BirimFiyat₺</div>
+													</div>
+													@*<a class="button button-sm button-secondary button-ujarak" asp-controller="Sepet" asp-action="Ekle">Sepet2</a>*@
+													<button type="button" class="button button-sm button-secondary button-ujarak" id="ekleButton" data-toggle="modal" data-target="#@item.ID" data-itemid="@item.ID">
+														Sepete Ekle
+													</button>
+
+												</div>
+											</div>
+										</article>
+									</div>
+								</div>
+							}
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Section CTA 2-->
+		<!-- About us-->
+		<section class="section">
+			<div class="parallax-container" data-parallax-img="/user/images/bg-parallax-2.jpg">
+				<div class="parallax-content section-xl context-dark bg-overlay-68">
+					<div class="container">
+						<div class="row row-lg row-50 justify-content-center border-classic border-classic-big">
+							<div class="col-sm-6 col-md-5 col-lg-3 wow fadeInLeft" data-wow-delay="0s">
+								<div class="counter-creative">
+									<div class="counter-creative-number">
+										<span class="counter">12</span><span class="icon counter-creative-icon fl-bigmug-line-trophy55"></span>
+									</div>
+									<h6 class="counter-creative-title">Awards</h6>
+								</div>
+							</div>
+							<div class="col-sm-6 col-md-5 col-lg-3 wow fadeInLeft" data-wow-delay=".1s">
+								<div class="counter-creative">
+									<div class="counter-creative-number">
+										<span class="counter">2</span><span class="symbol">k</span><span class="icon counter-creative-icon fl-bigmug-line-up104"></span>
+									</div>
+									<h6 class="counter-creative-title">Products</h6>
+								</div>
+							</div>
+							<div class="col-sm-6 col-md-5 col-lg-3 wow fadeInLeft" data-wow-delay=".2s">
+								<div class="counter-creative">
+									<div class="counter-creative-number">
+										<span class="counter">679</span><span class="icon counter-creative-icon fl-bigmug-line-sun81"></span>
+									</div>
+									<h6 class="counter-creative-title">Happy Clients</h6>
+								</div>
+							</div>
+							<div class="col-sm-6 col-md-5 col-lg-3 wow fadeInLeft" data-wow-delay=".3s">
+								<div class="counter-creative">
+									<div class="counter-creative-number">
+										<span class="counter">13</span><span class="icon counter-creative-icon fl-bigmug-line-user143"></span>
+									</div>
+									<h6 class="counter-creative-title">Farmers</h6>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</section>
+		<!-- Improve your interior with deco-->
+		@*<a class="section section-banner" href="https://www.templatemonster.com/intense-multipurpose-html-template.html" style="background-image: url(~/user/images/banner/background-03-1920x310.jpg); background-image: -webkit-image-set( url(~/user/images/banner/background-03-1920x310.jpg) 1x, url(~/user/images/banner/background-03-3840x620.jpg) 2x )"><img src="~/user/images/banner/foreground-03-1600x310.png" srcset="~/user/images/banner/foreground-03-1600x310.png 1x, ~/user/images/banner/foreground-03-3200x620.png 2x" alt="" width="1600" height="310"></a>*@
+		<!-- Page Footer-->
+
+	</div>
+	<!-- Global Mailform Output-->
+	<div class="snackbars" id="form-output-global"></div>
+
+
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+@section Scripts
+	{
+	<script>
+		$(document).ready(function () {
+
+			$("button[name^='addToCartButtonInsideModal']").click(function () {
+
+				let secilenSoslar = [];
+				$(".sos-checkbox:checked").each(function () {
+					secilenSoslar.push($(this).attr("id"));
+				});
+
+				let secilenYanUrunler = [];
+				$(".yanurun-checkbox:checked").each(function () {
+					secilenYanUrunler.push($(this).attr("id"))
+				});
+
+				let secilenIcecek;
+				$(`input[name="IcecekSecimi"]`).each(function () {
+					if ($(this).is(":checked")) {
+						secilenIcecek = ($(this).attr("id"));
+					}
+
+				});
+
+				let itemId = $(this).attr("name").split("-")[1];
+				let modal = $("#" + itemId);
+
+				let SecilenIcMalzemeler = [];
+
+				modal.find(".istenmeyenIcMalzeme-checkbox:not(:checked)").each(function () {
+					SecilenIcMalzemeler.push($(this).attr("id"));
+				});
+
+				$(".istenenIcMalzeme-checkbox:checked").each(function () {
+					SecilenIcMalzemeler.push($(this).attr("id"))
+				});
+
+
+				$.ajax({
+					type: "POST",
+					url: "/UserPanel/Sepet/Ekle",
+					data: {
+						MenuID: $("#menuId-" + itemId).text(),
+						MenuAdi: $("#menuAd-" + itemId).text(),
+						Icecek: secilenIcecek,
+						YanUrun: secilenYanUrunler,
+						Sos: secilenSoslar,
+						IcMalzemeler: SecilenIcMalzemeler,
+						Adet: $("#item_SatisAdedi-" + itemId).val(),
+
+					},
+					success: function () {
+						alert("Ürün Sepete Eklendi.");
+					},
+					error: function () {
+						alert("Hata Oluştu");
+
+					}
+
+				});
+
+			});
+		});
+	</script>
+	}
+
+
+

@@ -1,0 +1,30 @@
+﻿@model Burger
+<div class="mt-4">
+    <div>@Model.Ad İç Malzemeleri</div>
+    <form asp-action="BurgerEditor" method="post">
+        <input type="hidden" asp-for="ID"/>
+        <div class="row">
+            <div class="col-8 m-3">
+                @foreach (IcMalzeme icMalzeme in ViewBag.IcMalzemeler)
+                {
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label>@icMalzeme.Ad</label>
+                        </div>
+                        <div class="form-group col-1">
+                            @if(icMalzeme.IcMalzemeninBurgerleri.Any(x=>x.BurgerID ==Model.ID))
+                            {
+                                <input type="checkbox" name="icMalzemeId" value="@icMalzeme.ID" checked/>
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="icMalzemeId" value="@icMalzeme.ID"/>
+                            }
+                        </div>
+                    </div>
+                }
+                <input type="submit" class="btn btn-primary" />
+            </div>
+        </div>
+    </form>
+</div>

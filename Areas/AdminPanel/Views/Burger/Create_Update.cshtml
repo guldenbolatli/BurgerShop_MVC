@@ -1,0 +1,173 @@
+﻿@using Hamburger_MVC.Models.VMs;
+@model Burger_IcMalzeme_VM
+
+<body>
+    <div class="container tm-mt-big tm-mb-big">
+        <div class="row">
+            <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
+                <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="tm-block-title d-inline-block">Burger @ViewData["Baslik"]</h2>
+                        </div>
+                    </div>
+                    <div class="row tm-edit-product-row">
+                        <div class="col-8">
+
+                            <form class="tm-edit-product-form" asp-action="@ViewData["Tittle"]" asp-controller="Burger" method="post" enctype="multipart/form-data">
+
+                                <div class="form-group mb-3">
+                                    <label asp-for="Burger.Ad">
+                                        Ürün Adı
+                                    </label>
+                                    <input asp-for="Burger.Ad"
+                                           type="text"
+                                           class="form-control validate"
+                                           required />
+                                </div>
+                                <div class="form-group mb-3 ">
+                                    <label asp-for="Burger.BirimFiyat">
+                                        Birim Fiyat
+                                    </label>
+                                    <input asp-for="Burger.BirimFiyat"
+                                           type="text"
+                                           class="form-control validate"
+                                           required />
+                                </div>
+                                <div class="form-group col-12" style="display: flex; align-items: center; margin-left: -10px; ">
+                                    <label asp-for="Burger.VeganMi" style="margin-right: 10px; margin-top: 10px;">Vegan Mi</label>
+                                    <input type="checkbox" asp-for="Burger.VeganMi" class="form-check" />
+                                </div>
+
+                                <div class="col-12 mb-3">
+
+
+                                    <div class="custom-file mt-3 mb-3">
+                                        <input asp-for="Burger.Fotograf" type="file" style="display:none;" id="FotografInput" onchange="showImagePreview(this);" />
+                                        <input type="button" class="btn btn-primary btn-block mx-auto" value="FOTOGRAF YÜKLE" onclick="document.getElementById('FotografInput').click();" />
+                                    </div>
+
+
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary btn-block text-uppercase">@ViewData["Baslik"]</button>
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="col-4 text-white">
+                            <label asp-for="Burger.Fotograf">
+                                Ürün Fotografı
+                            </label>
+                            <div class="image-preview" id="ImagePreview" style="max-width: 200px ; max-height: 370px;">
+                                @if (ViewData["Tittle"] == "Update")
+                                {
+                                    <img src="~/Admin/urunfoto/@Model.Burger.UrunFotografı" alt="Ürün Fotoğrafı" style="max-width: 100%; max-height: 100%;" />
+                                }
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*  ----------- İçMalzemeler Ekleme Güncellleme İçin ------------*@
+    <div class="container tm-mt-big tm-mb-big">
+        <div class="row">
+            <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
+                <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="tm-block-title d-inline-block">Yeni İç Malzeme Ekle</h2>
+                        </div>
+                    </div>
+
+                    <div class="row tm-edit-product-row">
+                        <div class="col-8">
+                            <form class="tm-edit-product-form" asp-action="@ViewData["Tittle"]" asp-controller="Burger" method="post" enctype="multipart/form-data">
+
+                                <div class="form-group mb-3">
+                                    <label asp-for="IcMalzeme.Ad">
+                                        Ürün Adı
+                                    </label>
+                                    <input asp-for="IcMalzeme.Ad"
+                                           type="text"
+                                           class="form-control validate"
+                                           required />
+                                </div>
+                                @*<div class="form-group mb-3 ">
+                                <label asp-for="IcMalzeme.BirimFiyat">
+                                Birim Fiyat
+                                </label>
+                                <input asp-for="IcMalzeme.BirimFiyat"
+                                type="text"
+                                class="form-control validate"
+                                required />
+                                </div>*@
+                                @*<div class="form-group col-12" style="display: flex; align-items: center; margin-left: -10px; ">
+                                <label asp-for="Burger.VeganMi" style="margin-right: 10px; margin-top: 10px;">Vegan Mi</label>
+                                <input type="checkbox" asp-for="Burger.VeganMi" class="form-check" />
+                                </div>*@
+
+                                @*<div class="col-12 mb-3">
+
+
+                                <div class="custom-file mt-3 mb-3">
+                                <input asp-for="Burger.Fotograf" type="file" style="display:none;" id="FotografInput" onchange="showImagePreview(this);" />
+                                <input type="button" class="btn btn-primary btn-block mx-auto" value="FOTOGRAF YÜKLE" onclick="document.getElementById('FotografInput').click();" />
+                                </div>
+
+
+                                </div>*@
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary btn-block text-uppercase">@ViewData["Baslik"]</button>
+                                </div>
+
+                            </form>
+                        </div>
+                        @*<div class="col-4 text-white">
+                        <label asp-for="Burger.Fotograf">
+                        Ürün Fotografı
+                        </label>
+                        <div class="image-preview" id="ImagePreview" style="max-width: 200px ; max-height: 370px;">
+                        @if (ViewData["Tittle"] == "Update")
+                        {
+                        <img src="~/Admin/urunfoto/@Model.Burger.UrunFotografı" alt="Ürün Fotoğrafı" style="max-width: 100%; max-height: 100%;" />
+                        }
+
+                        </div>
+                        </div>*@
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*--------------     İçMalzeme Ekleme-Güncelleme Bitiş    -----------------*@
+
+</body>
+<script>
+    function showImagePreview(input) {
+        var preview = document.getElementById('ImagePreview');
+        preview.innerHTML = ''; // Temizleme
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                var img = document.createElement('img');
+                img.src = e.target.result;
+                img.className = 'img-fluid';
+                preview.appendChild(img);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>

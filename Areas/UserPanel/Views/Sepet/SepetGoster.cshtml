@@ -1,0 +1,184 @@
+﻿@using Hamburger_MVC.Models.ViewModels;
+@model SepetVM
+@{
+	decimal subTotal = 0;
+	decimal tasimaUcreti = 0;
+}
+
+@if (Model.Sepetler != null)
+{
+	<div class="cart-section mt-150 mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-md-12">
+					<div class="cart-table-wrap">
+						<table class="cart-table">
+							<thead class="cart-table-head">
+
+								<tr class="table-head-row">
+									<th class="product-remove"></th>
+									<th class="product-image">Product Image</th>
+									<th class="product-name">Name</th>
+									<th class="product-name">Price</th>
+									<th class="product-quantity">Quantity</th>
+									<th class="product-total">Total</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var sepet in Model.Sepetler)
+								{
+									<span style="display:none;">
+										@(subTotal += sepet.ToplamFiyat)
+									</span>
+									<tr class="table-body-row">
+										<td class="product-remove">
+											<a class="delete-cart-item" data-sepetid="@sepet.ID" href="#" style="color:red;">
+												<strong>X</strong>
+											</a>
+										</td>
+
+										<td class="product-image"><img src="~/Admin/urunfoto/@sepet.Menu.UrunFotografı" alt=""></td>
+										<td class="product-name">@sepet.Menu.Ad</td>
+										<td class="product-total">@sepet.Menu.BirimFiyat</td>
+										<td class="product-quantity"><input type="number" value="@sepet.Adet"></td>
+										<td class="product-total">@sepet.ToplamFiyat</td>
+									</tr>
+
+
+
+									<tr class="table-body-row">
+										<td colspan="6" class="product-name">
+											<ul style="list-style-type:square;">
+												<li><strong>İstenen İçMalzemeler:</strong></li>
+												@foreach (var icMalzemeler in Model.Icmalzemeler.Where(x => x.SepetID.Equals(@sepet.ID)).ToList())
+												{
+													<li>
+														@icMalzemeler.IcMalzeme.Ad
+													</li>
+												}
+												<li><strong>Ekstra Urunler:</strong></li>
+												@foreach (var yanUrun in Model.YanUrunler.Where(x => x.SepetID.Equals(@sepet.ID)).ToList())
+												{
+													<li>
+														@yanUrun.YanUrun.Ad
+													</li>
+												}
+
+												@foreach (var icecekler in Model.Icecekler.Where(x => x.SepetID.Equals(@sepet.ID)).ToList())
+												{
+													<li>
+														<strong>Secilen İçecek:</strong>
+
+														@icecekler.Icecek.Ad
+													</li>
+												}
+												<li><strong>Seçilen Soslar:</strong></li>
+												@foreach (var sos in Model.Soslar.Where(x => x.SepetID.Equals(@sepet.ID)).ToList())
+												{
+													<li>
+														@sos.Sos.Ad
+													</li>
+												}
+
+											</ul>
+										</td>
+									</tr>
+								}
+
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="col-lg-4">
+					<div class="total-section">
+						<table class="total-table">
+							<thead class="total-table-head">
+								<tr class="table-total-row">
+									<th>Total</th>
+									<th>Price</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="total-data">
+									<td><strong>Ara Toplam: </strong></td>
+									<td id="subTotalData">@subTotal ₺</td>
+
+								</tr>
+								@*	@if (subTotal > 100)
+							{
+							<span style="display:none;">
+							@(tasimaUcreti=17)
+							</span>
+							<tr class="total-data">
+							<td><strong>Teslimat Ücreti: </strong></td>
+							<td>@tasimaUcreti ₺</td>
+							</tr>
+							}*@
+
+								<tr class="total-data">
+									<td><strong>Toplam Fiyat: </strong></td>
+									<td><label id="total-price-value">@subTotal ₺</label></td>
+
+								</tr>
+							</tbody>
+						</table>
+						<div class="cart-buttons">
+							<div style="display: flex; justify-content: space-between;">
+								<a asp-action="SepetGoster" asp-controller="Sepet" class="boxed-btn">Update Cart</a>
+								<form method="post" asp-action="SepetOnayla" asp-controller="Sepet">
+									@foreach (var sepet in Model.Sepetler)
+									{
+										<input type="hidden" name="sepetId" value="@sepet.ID" />
+									}
+									<button type="submit" class="btn btn-lg" style="border-radius: 25px; background-color: darkorange; height:45px;">Check Out</button>
+								</form>
+							</div>
+
+
+						</div>
+					</div>
+
+					<div class="coupon-section">
+						<h3>Apply Coupon</h3>
+						<div class="coupon-form-wrap">
+							<form action="index.html">
+								<p><input type="text" placeholder="Coupon"></p>
+								<p><input type="submit" value="Apply"></p>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+	$(document).ready(function () {
+		$(".delete-cart-item").on("click", function (e) {
+			e.preventDefault();
+			var sepetId = $(this).data("sepetid");
+			var clickedElement = $(this); // Tıklanan öğeyi saklayın
+
+
+			$.ajax({
+				type: "POST",
+				url: "/UserPanel/Sepet/Sil", // Sil aksiyonunuzun URL'sini doğru şekilde ayarlayın
+				data: { sepetId: sepetId },
+				success: function () {
+					clickedElement.closest(".table-body-row").next(".table-body-row").remove(); // Bir sonraki table-body-row'u da kaldırın
+					clickedElement.closest(".table-body-row").remove(); // Tıklanan table-body-row'u kaldırın
+
+
+				},
+				error: function () {
+					alert("Silme işlemi başarısız oldu.");
+				}
+			});
+		});
+	});
+</script>

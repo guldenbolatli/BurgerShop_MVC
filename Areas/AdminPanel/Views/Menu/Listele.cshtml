@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Menu>
+
+<body id="reportsPage">
+    <div class="container mt-5">
+        <div class="row tm-content-row">
+            @*<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 tm-block-col">*@
+            <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8 tm-block-col">
+                <div class="tm-bg-primary-dark tm-block tm-block-products">
+                    <div class="tm-product-table-container">
+                        <table class="table table-hover tm-table-small tm-product-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">&nbsp;</th>
+                                    <th scope="col">Menu Adı</th>
+                                    <th scope="col">Toplam Kalori</th>
+                                    <th scope="col">Satış Adedi</th>
+                                    <th scope="col">Burger</th>
+                                    <th scope="col">İçecek</th>
+                                    <th scope="col">Güncelle</th>
+                                    <th scope="col">Sil</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var menu in Model)
+                                {
+
+                                    <tr>
+                                        <th scope="row"><input type="checkbox" /></th>
+                                        <td class="tm-product-name">@menu.Ad</td>
+                                        <td>@menu.ToplamKalori</td>
+                                        <td>@menu.SatisAdedi</td>
+                                        <td>@menu.Burger.Ad</td>
+                                        <td>@menu.Icecek.Ad</td>
+                                        <td>
+                                            <a asp-controller="Menu" asp-action="Update" asp-route-id="@menu.ID" class="tm-product-delete-link">
+                                                <i class="far fa-edit tm-product-delete-icon"></i>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a asp-controller="Menu" asp-action="Delete" asp-route-id="@menu.ID" class="tm-product-delete-link">
+                                                <i class="far fa-trash-alt tm-product-delete-icon "></i>
+                                            </a>
+                                        </td>
+                                        
+                                    </tr>
+
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- table container -->
+                    <a asp-action="Create" asp-controller="Menu"
+                       class="btn btn-primary btn-block text-uppercase mb-3">Yeni Menü Ekle</a>
+
+
+                    <button asp-controller="Burger" asp-action="Delete" class="btn btn-primary btn-block text-uppercase">
+                        Seçili Ürünleri Sil
+                    </button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</body>
+
+
+       <script>
+    $(function () {
+    $(".tm-product-name").on("click", function () {
+    window.location.href = "edit-product.html";
+    });
+    });
+    </script>

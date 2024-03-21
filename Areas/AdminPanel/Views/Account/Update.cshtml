@@ -1,0 +1,103 @@
+﻿@model UserVM
+
+<body id="reportsPage">
+	<div class="container mt-5">
+		<div class="row tm-content-row">
+			<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 tm-block-col">
+				<form id="confirmationForm" method="post" asp-action="Update" asp-controller="Account" asp-route-id="@Model.User.Id" enctype="multipart/form-data">
+					<div class="tm-bg-primary-dark tm-block tm-block-products">
+						<div class="tm-product-table-container">
+
+							<table class="table table-hover tm-table-small tm-product-table">
+								<thead>
+									<tr>
+										<th scope="col">Id</th>
+										<th scope="col">User Name</th>
+										<th scope="col">Ad Soyad</th>
+										<th scope="col">Mevcut Role</th>
+										<th scope="col">Role Değiştir</th>
+
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<div class="form-group mb-3">
+												
+												<input asp-for="User.Id"
+													   type="text"
+													   readonly
+													   class="form-control validate"
+													   required />
+											</div>
+										</td>
+										<td>
+											<div class="form-group mb-3">
+
+												<input asp-for="User.UserName"
+													   type="text"
+													   readonly
+													   class="form-control validate"
+													   required />
+											</div>
+										</td>
+										<td>
+											<div class="form-group mb-3">
+
+												<input asp-for="User.AdSoyad"
+													   type="text"
+													   readonly
+													   class="form-control validate"
+													   required />
+											</div>
+										</td>
+										<td>
+											<div class="form-group mb-3">
+
+												<input asp-for="SelectedRole"
+													   type="text"
+													   class="form-control validate"
+													   required readonly/>
+											</div>
+										</td>
+									
+										<td>
+											<div class="form-group">
+												<select asp-for="NewRole" asp-items="Model.Roles" class="form-control" style="height:60px;">
+													<option value="">Rol Seçiniz...</option>
+												</select>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+
+
+						</div>
+						<div class="d-flex justify-content-end">
+
+							<button id="confirmButton" type="submit" class="btn btn-primary">
+								<i class="fa fa-save tm-product-delete-icon">
+									&nbsp
+									<span>Kaydet</span>
+								</i>
+
+							</button>
+
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+
+<script>
+	var userName = @Json.Serialize(Model.User.UserName);
+    document.getElementById("confirmButton").addEventListener("click", function () {
+        var result = confirm(userName + " kullanıcısının  rolünü değiştiriyorsunuz. Emin misiniz?");
+        if (result) {
+            document.getElementById("confirmationForm").submit();
+        }
+    });
+</script>

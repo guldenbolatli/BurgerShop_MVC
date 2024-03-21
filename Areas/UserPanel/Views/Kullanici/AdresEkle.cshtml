@@ -1,0 +1,33 @@
+﻿@model Hamburger_MVC.Models.Adres
+
+<div class="d-flex justify-content-between align-items-center">
+	<a asp-action="Detail" asp-controller="Kullanici" class="btn btn-outline-secondary">Kullanici Detaya Geri Dön</a>
+</div>
+
+<div class="row">
+	<div class="col-md-6 mx-auto">
+		<form asp-action="AdresEkle" class="border rounded p-4" method="post">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="form-group">
+				<label asp-for="Baslik" class="control-label">Adres Başlığı</label>
+				<input asp-for="Baslik" class="form-control" />
+				<span asp-validation-for="Baslik" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Aciklama" class="control-label">Adres Detayı</label>
+				<textarea asp-for="Aciklama" class="form-control" rows="5"></textarea>
+				<span asp-validation-for="Aciklama" class="text-danger"></span>
+			</div>
+			<div class="form-group text-center">
+				<input type="submit" value="Create" class="btn btn-primary" />
+			</div>
+		</form>
+	</div>
+</div>
+<div>
+	<br />
+	<br />
+	<br />
+</div>
+
+

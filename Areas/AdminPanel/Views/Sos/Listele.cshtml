@@ -1,0 +1,181 @@
+﻿@model List<Sos>
+<body id="reportsPage">
+    <div class="container ml-5">
+        <div class="row tm-content-row">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 tm-block-col">
+                <div class="tm-bg-primary-dark tm-block tm-block-products">
+                    <div class="tm-product-table-container-center">
+                        <table class="table table-hover tm-table-small tm-product-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">&nbsp;</th>
+                                    <th scope="col">AD</th>
+                                    <th scope="col">FİYAT</th>
+                                    <th scope="col">Vegan Mı</th>
+                                    <th scope="col">SİL</th>
+                                    <th scope="col">GÜNCELLE</th>
+                                
+                                </tr>
+                            </thead>
+                            <tbody>
+
+
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <th scope="row"><input type="checkbox" /></th>
+                                        <td class="tm-product-name">@item.Ad</td>
+                                        <td>@item.BirimFiyat</td>
+                                        @if (item.VeganMi)
+                                        {
+                                            <td><i class="fas fa-check ml-3"></i></td>
+                                        }
+                                        else
+                                        {
+                                            <td><i class="fas fa-times ml-3"></i></td>
+                                        }
+                                        @*        <td>400</td>
+                                    <td>22 Jan 2019</td>*@
+                                        <td class="ml-2">
+                                            <a asp-action="Delete" asp-controller="Sos" asp-route-id="@item.ID" class="tm-product-delete-link">
+                                                <i class="far fa-trash-alt tm-product-delete-icon "></i>
+                                            </a>
+
+                                        </td>
+                                        <td class="ml-3">
+                                            <a asp-action="Update" asp-controller="sos" asp-route-id="@item.ID" class="tm-product-delete-link">
+                                                <i class="fa fa-edit tm-product-delete-icon "></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- table container -->
+                    <a asp-action="Create" asp-controller="Sos"
+                       class="btn btn-primary btn-block text-uppercase mb-3">Add new product</a>
+                    <button class="btn btn-primary btn-block text-uppercase">
+                        Delete selected products
+                    </button>
+                </div>
+            </div>
+            @* <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 tm-block-col">
+            <div class="tm-bg-primary-dark tm-block tm-block-product-categories">
+            <h2 class="tm-block-title">Product Categories</h2>
+            <div class="tm-product-table-container">
+            <table class="table tm-table-small tm-product-table">
+            <tbody>
+            <tr>
+            <td class="tm-product-name">Product Category 1</td>
+            <td class="text-center">
+            <a href="#" class="tm-product-delete-link">
+            <i class="far fa-trash-alt tm-product-delete-icon"></i>
+            </a>
+            </td>
+            </tr>
+            <tr>
+            <td class="tm-product-name">Product Category 2</td>
+            <td class="text-center">
+            <a href="#" class="tm-product-delete-link">
+            <i class="far fa-trash-alt tm-product-delete-icon"></i>
+            </a>
+            </td>
+            </tr>
+            <tr>
+            <td class="tm-product-name">Product Category 3</td>
+            <td class="text-center">
+            <a href="#" class="tm-product-delete-link">
+            <i class="far fa-trash-alt tm-product-delete-icon"></i>
+            </a>
+            </td>
+            </tr>
+            <tr>
+            <td class="tm-product-name">Product Category 4</td>
+            <td class="text-center">
+            <a href="#" class="tm-product-delete-link">
+            <i class="far fa-trash-alt tm-product-delete-icon"></i>
+            </a>
+            </td>
+            </tr>
+            <tr>
+            <td class="tm-product-name">Product Category 5</td>
+            <td class="text-center">
+            <a href="#" class="tm-product-delete-link">
+            <i class="far fa-trash-alt tm-product-delete-icon"></i>
+            </a>
+            </td>
+            </tr>
+            <tr>
+            <td class="tm-product-name">Product Category 6</td>
+            <td class="text-center">
+            <a href="#" class="tm-product-delete-link">
+            <i class="far fa-trash-alt tm-product-delete-icon"></i>
+            </a>
+            </td>
+            </tr>
+            <tr>
+            <td class="tm-product-name">Product Category 7</td>
+            <td class="text-center">
+            <a href="#" class="tm-product-delete-link">
+            <i class="far fa-trash-alt tm-product-delete-icon"></i>
+            </a>
+            </td>
+            </tr>
+            <tr>
+            <td class="tm-product-name">Product Category 8</td>
+            <td class="text-center">
+            <a href="#" class="tm-product-delete-link">
+            <i class="far fa-trash-alt tm-product-delete-icon"></i>
+            </a>
+            </td>
+            </tr>
+            <tr>
+            <td class="tm-product-name">Product Category 9</td>
+            <td class="text-center">
+            <a href="#" class="tm-product-delete-link">
+            <i class="far fa-trash-alt tm-product-delete-icon"></i>
+            </a>
+            </td>
+            </tr>
+            <tr>
+            <td class="tm-product-name">Product Category 10</td>
+            <td class="text-center">
+            <a href="#" class="tm-product-delete-link">
+            <i class="far fa-trash-alt tm-product-delete-icon"></i>
+            </a>
+            </td>
+            </tr>
+            <tr>
+            <td class="tm-product-name">Product Category 11</td>
+            <td class="text-center">
+            <a href="#" class="tm-product-delete-link">
+            <i class="far fa-trash-alt tm-product-delete-icon"></i>
+            </a>
+            </td>
+            </tr>
+            </tbody>
+            </table>
+            </div>
+            <!-- table container -->
+            <button class="btn btn-primary btn-block text-uppercase mb-3">
+            Add new category
+            </button>
+            </div>
+            </div>*@
+        </div>
+    </div>
+
+
+
+    <script>
+        $(function () {
+            $(".tm-product-name").on("click", function () {
+                window.location.href = "edit-product.html";
+            });
+        });
+    </script>
+</body>

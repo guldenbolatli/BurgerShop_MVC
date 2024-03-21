@@ -1,0 +1,89 @@
+﻿@model User
+
+<body id="reportsPage">
+	<div class="container mt-5">
+		<div class="row tm-content-row">
+			<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 tm-block-col">
+				<form id="confirmationForm" method="post" asp-action="Delete" asp-controller="Account" asp-route-id="@Model.Id" enctype="multipart/form-data">
+					<div class="tm-bg-primary-dark tm-block tm-block-products">
+						<div class="tm-product-table-container">
+
+							<table class="table table-hover tm-table-small tm-product-table">
+								<thead>
+									<tr>
+										<th scope="col">Id</th>
+										<th scope="col">User Name</th>
+										<th scope="col">Ad Soyad</th>
+										<th scope="col">Telefon Numarası</th>
+										<th scope="col">Oluşturulma Tarihi</th>
+
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<div class="form-group mb-3">
+
+												<input asp-for="Id"
+													   type="hidden"
+													   class="form-control validate"
+													   required />
+													   <span>@Model.Id</span>
+										
+											</div>
+										</td>
+										<td>
+											<span>@Model.UserName</span>
+										</td>
+										<td>
+											<span>@Model.AdSoyad</span>
+										</td>
+										<td>
+											<span>@Model.PhoneNumber</span>
+										</td>
+										<td>
+											<span>@Model.OlusturmaTarihi</span>
+										</td>
+										
+
+										
+									</tr>
+								</tbody>
+							</table>
+
+
+						</div>
+						<div class="d-flex justify-content-end">
+
+							<button id="confirmButton" type="submit" class="btn btn-danger">
+								<i class="far fa-trash-alt tm-product-delete-icon"></i>
+									&nbsp
+									<span>Delete</span>
+							
+
+							</button>
+
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+
+<script>
+	var userName = @Json.Serialize(Model.UserName);
+	document.getElementById("confirmButton").addEventListener("click", function () {
+		var result = confirm(userName + " kullanıcısını tamamen siliyorsunuz. Emin misiniz?");
+		if (result) {
+			document.getElementById("confirmationForm").submit();
+		}
+		else
+		{
+
+		}
+	});
+
+	
+	
+</script>

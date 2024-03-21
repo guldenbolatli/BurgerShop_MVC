@@ -1,0 +1,222 @@
+﻿@using Hamburger_MVC.Models.ViewModels;
+@model UrunlerVM
+
+@foreach (var item in Model.Menuler)
+{
+	<div class="col-sm-6 col-md-12 col-lg-6">
+		<div class="oh-desktop">
+			<article class="product product-2 box-ordered-item wow slideInRight" data-wow-delay="0s">
+				<div class="unit flex-row flex-lg-column">
+					<div class="unit-left">
+						<div class="product-figure">
+							<img src="~/Admin/urunfoto/@item.UrunFotografı" alt="" width="270" height="280" />
+							<div class="product-button">
+							</div>
+							<button type="button" class="btn btn-primary ekleButon" id="ekleButton" data-toggle="modal" data-target="#@item.ID" data-itemid="@item.ID">
+								Add to Cart
+							</button>
+							<input type="hidden" class="itemId" value="@item.ID">
+							<div class="modal" id="@item.ID">
+								<div class="modal-dialog">
+									<div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Add to Cart</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <div class="modal-body" id="modalContent">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <img src="~/Admin/urunfoto/@item.UrunFotografı" class="img-fluid img-thumbnail" style="height:150px; width:100%;" alt="...">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <table class="table">
+                                                        <tr>
+                                                            <td style="display: none;"><span id="menuId-@item.ID" name="menuId-@item.ID">@item.ID</span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><span id="menuAd-@item.ID" name="menuAd-@item.ID">@item.Ad</span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><span>@item.BirimFiyat</span></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <table class="table">
+                                                <tr>
+                                                    <th>Çıkarılabilir Malzeme(@item.Ad)</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>En Fazla @item.Burger.BurgerinIcMalzemeleri.Count() tane seçebilirsiniz.</td>
+                                                </tr>
+                                                @foreach (var icMalzeme in item.Burger.BurgerinIcMalzemeleri)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            <label>@icMalzeme.IcMalzeme.Ad İstemiyorum</label>
+                                                            <input type="checkbox" id="@icMalzeme.IcMalzeme.ID" name="@icMalzeme.IcMalzeme.ID" class="istenmeyenIcMalzeme-checkbox" />
+                                                            <label class="tumIcMalzemeler">@icMalzeme.IcMalzeme.ID</label>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </table>
+
+                                            <table class="table">
+                                                <tr>
+                                                    <th>Ekstra Malzeme Seçimi</th>
+                                                </tr>
+                                                @foreach (var tumIcMalzeme in Model.IcMalzemeler)
+                                                {
+                                                    if (!item.Burger.BurgerinIcMalzemeleri.Any(x => x.IcMalzemeID == tumIcMalzeme.ID))
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                <label>@tumIcMalzeme.Ad</label>
+                                                                <input type="checkbox" id="@tumIcMalzeme.ID" name="@tumIcMalzeme.ID" class="istenenIcMalzeme-checkbox" />
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                }
+                                            </table>
+
+                                            <table class="table">
+                                                <tr>
+                                                    <th>İçecek seçimi(Bir tane seçim yapabilirsiniz.)</th>
+                                                </tr>
+                                                @foreach (var icecek in Model.Icecekler)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            <label>@icecek.Ad</label>
+                                                            <input type="radio" id="@icecek.ID" name="IcecekSecimi" />
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </table>
+
+                                            <table class="table">
+                                                <tr>
+                                                    <th>Yan Ürün seçimi(Bir tane seçim yapabilirsiniz.)</th>
+                                                </tr>
+                                                @foreach (var yanUrun in Model.YanUrunler)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            <label asp-for="@yanUrun.ID">@yanUrun.Ad</label>
+                                                            <input type="checkbox" id="@yanUrun.ID" name="@yanUrun.ID" class="yanurun-checkbox" />
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </table>
+
+                                            <table class="table">
+                                                <tr>
+                                                    <th>Sos seçimi</th>
+                                                </tr>
+                                                @foreach (var sos in Model.Soslar)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            <label asp-for="@sos.ID">@sos.Ad</label>
+                                                            <input type="checkbox" class="sos-checkbox" id="@sos.ID" name="Sos_@sos.ID" />
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <label>Adet</label>
+                                            <input type="number" class="form-control" id="item_SatisAdedi-@item.ID" name="item_SatisAdedi-@item.ID" min="1" value="1">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button id="addToCartButtonInsideModal-@item.ID" name="addToCartButtonInsideModal-@item.ID" class="btn btn-success">Sepete Ekle</button>
+                                        </div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="unit-body">
+						<h6 class="product-title"><a href="#">@item.Ad</a></h6>
+						<div class="product-price-wrap">
+							<div class="product-price">@item.BirimFiyat₺</div>
+						</div>
+						<a class="button button-sm button-secondary button-ujarak" asp-controller="Sepet" asp-action="Ekle">Add to cart</a>
+					</div>
+				</div>
+			</article>
+		</div>
+	</div>
+}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+@section Scripts
+	{
+	<script>
+		$(document).ready(function () {
+
+			$("button[name^='addToCartButtonInsideModal']").click(function () {
+
+				let secilenSoslar = [];
+				$(".sos-checkbox:checked").each(function () {
+					secilenSoslar.push($(this).attr("id"));
+				});
+
+				let secilenYanUrunler = [];
+				$(".yanurun-checkbox:checked").each(function () {
+					secilenYanUrunler.push($(this).attr("id"))
+				});
+
+				let secilenIcecek;
+				$(`input[name="IcecekSecimi"]`).each(function () {
+					if ($(this).is(":checked")) {
+						secilenIcecek = ($(this).attr("id"));
+					}
+
+				});
+
+				let itemId = $(this).attr("name").split("-")[1];
+				let modal = $("#" + itemId);
+
+				let SecilenIcMalzemeler = [];
+
+				modal.find(".istenmeyenIcMalzeme-checkbox:not(:checked)").each(function () {
+					SecilenIcMalzemeler.push($(this).attr("id"));
+				});
+
+				$(".istenenIcMalzeme-checkbox:checked").each(function () {
+					SecilenIcMalzemeler.push($(this).attr("id"))
+				});
+
+				alert($("#item_SatisAdedi-" + itemId).val())
+			
+
+				$.ajax({
+					type: "POST",
+					url: "/UserPanel/Sepet/Ekle",
+					data: {
+						MenuID: $("#menuId-"+itemId).text(),
+						MenuAdi: $("#menuAd-" + itemId).text(),
+						Icecek: secilenIcecek,
+						YanUrun: secilenYanUrunler,
+						Sos: secilenSoslar,
+						IcMalzemeler: SecilenIcMalzemeler,
+						Adet: $("#item_SatisAdedi-"+itemId).val(),
+
+					},
+					success: function () {
+						alert("Ürün Sepete Eklendi.");
+					},
+					error: function () {
+						alert("Hata Oluştu");
+
+					}
+
+				});
+
+			});
+		});
+	</script>
+
+}
+

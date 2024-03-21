@@ -1,0 +1,76 @@
+﻿@using Hamburger_MVC.Models.ViewModels;
+@model UserAdresVM 
+<div class="card single-accordion">
+    <div class="card-header" id="headingOne">
+        <h5 class="mb-0">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Kullanici Bilgileri
+            </button>
+        </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+            <div class="billing-address-form">
+                <form asp-action="Edit" method="post">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>
+
+                                <input type="hidden" asp-for="@Model.User.Id" class="form-control">
+                            </p>
+                            <p>
+                                <label asp-for="@Model.User.Ad">Ad:</label>
+                                <input type="text" asp-for="@Model.User.Ad" class="form-control">
+                            </p>
+                            <p>
+                                <label asp-for="@Model.User.Soyad">Soyad:</label>
+                                <input type="text" asp-for="@Model.User.Soyad" class="form-control">
+                            </p>
+                            <div class="form-group row">
+                                <label asp-for="@Model.User.Email" class="col-sm-3 col-form-label">E-posta:</label>
+                                <div class="col-sm-6">
+                                    <input type="email" asp-for="@Model.User.Email" class="form-control" id="Email" readonly>
+                                </div>
+                                <div class="col-sm-3">
+                                    <a asp-controller="Kullanici" asp-action="EditEmail" asp-route-id="@Model.User.Id" class="btn btn-outline-warning">
+                                        <i class="fas fa-edit"></i> Email Güncelle
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <p>
+                                <label asp-for="@Model.User.PhoneNumber">Telefon Numarası:</label>
+                                <input type="tel" asp-for="@Model.User.PhoneNumber" class="form-control">
+                            </p>
+                            <div class="form-group">
+                                <label asp-for="@Model.Adresler">Adresler:</label>
+                                <select asp-for="@Model.Adresler" class="form-control">
+                                    @foreach (var adres in Model.Adresler)
+                                    {
+                                        <option value="@adres.Baslik">@adres.Baslik - @adres.Aciklama</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <a asp-controller="Kullanici" asp-action="AdresEkle" class="btn btn-outline-warning">
+                                    <i class="fas fa-plus"></i> Adres Ekle
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>
+                                @*<label asp-for="@Model.User.Comments">Say Something:</label>
+                                <textarea asp-for="@Model.User.Comments" class="form-control" rows="5"></textarea>*@
+                                <button type="submit" class="button button-sm button-secondary button-ujarak">Değişiklikleri Kaydet</button>
+                            </p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
